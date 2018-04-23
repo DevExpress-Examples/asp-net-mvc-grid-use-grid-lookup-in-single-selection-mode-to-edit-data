@@ -1,0 +1,44 @@
+@Html.DevExpress().GridView(settings =>
+{
+    settings.Name = "ProductsGridView";
+    settings.KeyFieldName = "ProductID";
+    settings.CallbackRouteValues = new { Controller = "Home", Action = "ProductsGridViewPartial" };
+    settings.SettingsEditing.AddNewRowRouteValues = new { Controller = "Home", Action = "ProductsGridViewAddNewPartial" };
+    settings.SettingsEditing.UpdateRowRouteValues = new { Controller = "Home", Action = "ProductsGridViewUpdatePartial" };
+    settings.SettingsEditing.DeleteRowRouteValues = new { Controller = "Home", Action = "ProductsGridViewDeletePartial" };
+    settings.CommandColumn.Visible = true;
+    settings.CommandColumn.ShowEditButton = true;
+    settings.CommandColumn.ShowNewButton = true;
+    settings.CommandColumn.ShowDeleteButton = true;    
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "ProductID";
+        column.EditFormSettings.Visible = DefaultBoolean.False;
+    });
+    settings.Columns.Add("ProductName");
+    settings.Columns.Add(column =>
+    {
+        column.FieldName = "CategoryID";
+        column.Caption = "Category";
+        column.ColumnType = MVCxGridViewColumnType.ComboBox;
+        ComboBoxProperties properties = column.PropertiesEdit as ComboBoxProperties;
+        properties.TextField = "CategoryName";
+        properties.ValueField = "CategoryID";
+        properties.ValueType = typeof(int);
+        properties.DataSource = ViewData["Categories"];
+        column.SetEditItemTemplateContent(container => {         
+            Html.RenderAction("GridLookupPartial", new  { CurrentCategory = DataBinder.Eval(container.DataItem, "CategoryID")  });         
+        });
+    });
+    settings.Columns.Add("QuantityPerUnit");
+    settings.Columns.Add(column=>{
+       column.FieldName = "UnitPrice";
+       column.ColumnType = MVCxGridViewColumnType.SpinEdit;
+       SpinEditProperties properties = column.PropertiesEdit as SpinEditProperties;
+       properties.DecimalPlaces = 2;
+       properties.DisplayFormatString = "C2";
+    });
+    settings.CellEditorInitialize = (s, e) => {
+        ((ASPxEdit)e.Editor).ValidationSettings.Display = Display.Dynamic;
+    };
+}).SetEditErrorText((string)ViewData["EditError"]).Bind(Model).GetHtml()
