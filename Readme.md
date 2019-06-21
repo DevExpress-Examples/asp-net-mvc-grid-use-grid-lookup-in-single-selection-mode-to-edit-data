@@ -7,6 +7,9 @@
 * [ProductsGridViewPartial.cshtml](./CS/E2979MVC/Views/Home/ProductsGridViewPartial.cshtml)
 <!-- default file list end -->
 # GridView - How to use GridLookup with single selection mode in EditForm 
+<!-- run online -->
+**[[Run Online]](https://codecentral.devexpress.com/t328413)**
+<!-- run online end -->
 
 
 <p>This example illustrates how to use GridLookup with single selection mode (<a href="https://documentation.devexpress.com/#AspNet/DevExpressWebGridLookupProperties_SelectionModetopic">SelectionMode</a> is <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebGridLookupSelectionModeEnumtopic">Single</a>) in GridView for CRUD operations. By default, GridView doesn't have a built-in column for this scenario. The main idea is to use the <a href="https://documentation.devexpress.com/#AspNet/DevExpressWebMvcMVCxGridViewColumn_SetEditItemTemplateContenttopic">MVCxGridViewColumn.SetEditItemTemplateContent</a> method to place GridLookup in EditForm. The same approach will work for a custom EditForm (<a href="https://documentation.devexpress.com/#AspNet/DevExpressWebMvcGridViewSettings_SetEditFormTemplateContenttopic">GridViewSettings.SetEditFormTemplateContent</a>) as well.<br><br>In order to use client-side unobtrusive JavaScript validation with GridLookup, it's necessary to pass a correct model instance to a partial view. This instance should be of the same type as an item of the collection bound to GridView.<br><br>Controller:<br><br></p>
