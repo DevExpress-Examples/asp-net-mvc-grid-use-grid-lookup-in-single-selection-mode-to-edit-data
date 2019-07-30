@@ -8,7 +8,7 @@
 <!-- default file list end -->
 # GridView - How to use GridLookup with single selection mode in EditForm 
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t328413)**
+**[[Run Online]](https://codecentral.devexpress.com/t328413/)**
 <!-- run online end -->
 
 
