@@ -5,7 +5,7 @@
 <!-- default badges end -->
 # Grid View for ASP.NET MVC - How to use a grid lookup control in single selection mode to edit grid data
 <!-- run online -->
-**[[Run Online]](https://codecentral.devexpress.com/t328413/)**
+**[[Run Online]](https://codecentral.devexpress.com/128550902/)**
 <!-- run online end -->
 
 This example demonstrates how to add a grid lookup control in single selection mode to the grid's edit form template.
